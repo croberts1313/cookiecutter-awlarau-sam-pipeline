@@ -12,7 +12,7 @@ A cookiecutter template to create a generic 3-environment Pipeline for your Serv
 
 ## Usage
 
-Generate a Pipeline template to your current project directory: `sam init --location gh:aws-samples/cookiecutter-aws-sam-pipeline` 
+Generate a Pipeline template to your current project directory: `sam init --location gh:aws-samples/cookiecutter-awlarau-sam-pipeline`
 
 After generated you should have the following files:
 
