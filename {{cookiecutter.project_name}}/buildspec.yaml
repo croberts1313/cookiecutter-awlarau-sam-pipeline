@@ -30,20 +30,14 @@ phases:
       # - echo "[Build phase]"
       # We package the SAM template and create `packaged.yaml` file that will be used in our pipeline for deployment
       ## Here we separate Build from Deployment and segregate permissions for different steps
-      - sh build.sh --target=Package      
-
-      - sam package \
-        --template-file template.yaml \
-        --output-template-file template-export.yml \
-        --s3-bucket $BUILD_OUTPUT_BUCKET
-
-      - mv template-export.yml ../template-export.yml
+      - dotnet publish src/HelloWorld
+      - aws cloudformation package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket $BUILD_OUTPUT_BUCKET
 
   post_build:
     commands:
       # Use Post Build for notifications, git tags and any further customization after build
       # - echo "[Post-Build phase]"
-      - echo "SAM packaging completed on `date`"
+      - echo "Packaging completed on `date`"
 
 ##################################
 # Build Artifacts to be uploaded #
@@ -52,7 +46,7 @@ phases:
 artifacts:
   files:
     # list of local files relative to this build environment that will be added to the final artifact (zip)
-    - template-export.yml
+    - packaged.yaml
   
 
 #########################################
