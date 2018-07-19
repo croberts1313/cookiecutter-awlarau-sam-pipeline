@@ -7,6 +7,6 @@ aws cloudformation package \
 
 aws cloudformation deploy \
     --template-file pipeline-out.yaml \
-    --stack-name {{cookiecutter.bucket_name.replace(' ', '-')}}-CICD-Pipeline \
+    --stack-name {{cookiecutter.project_name.replace(' ', '-')}}-CICD-Pipeline \
     --capabilities CAPABILITY_IAM
 
