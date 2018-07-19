@@ -273,7 +273,7 @@ Resources:
                           - 'logs:CreateLogStream'
                           - 'logs:PutLogEvents'
                         Resource:
-                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/{{cookiecutter.project_name.replace(' ', '-')}}'
+                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/{{cookiecutter.project_name.replace(' ', '-')}}-Build'
                           - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/{{cookiecutter.project_name.replace(' ', '-')}}:*'
                 - PolicyName: CodeBuildArtifactsBucket
                   PolicyDocument:
